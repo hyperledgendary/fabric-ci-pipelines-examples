@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+  labels:
+    app: ubuntu
+spec:
+  volumes:
+    - name: ansible-config-vol
+      configMap:
+        name: org1-vars
+    - name: ansible-config-vol
+      configMap:
+        name: org2-vars        
+    - name: ansible-ctx-vol
+      persistentVolumeClaim:
+        claimName: ansible-results-pvc
+  containers:
+  - image: ubuntu:configmap
+    command:
+      - "sleep"
+      - "604800"
+    imagePullPolicy: IfNotPresent
+    name: ubuntu
+    volumeMounts:
+      - name: ansible-config-vol
+        mountPath: /playbooks/env
+        readOnly: true
+      - name: ansible-ctx-vol
+        mountPath: /playbooks/output
+  restartPolicy: Never

@@ -1,0 +1,8 @@
+{
+    "api_endpoint": "xxxxxxxxxxxxxxx",
+    "apikey": "xxxxxxxxxxxxxxxxxxxxx",
+    "iam_apikey_description": "Auto-generated for key ",
+    "iam_apikey_name": "Service credentials-1",
+    "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+    "iam_serviceid_crn": ""
+  }
